@@ -152,6 +152,7 @@ def main():
             x1, y1, x2, y2 = boxes[i, :].tolist()
             new_result = {'score': float(scores[i]),
                           'bbox': [int(x1), int(y1), int(x2), int(y2)]}
+            print(new_result)
             result[file].append(new_result)
 
             if args.output is None and args.crop_output_image_location is None:
