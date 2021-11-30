@@ -98,7 +98,7 @@ def main():
     parser.add_argument('-crop-width', help='The width of images to crop', dest='crop_width', type=int)
     parser.add_argument('-crop-height', help='The height of images to crop', dest='crop_height', type=int)
     parser.add_argument('-output-ori', help='Output the bounding box with the original img', dest='output_ori',default = False, type=bool)
-    parser.add_argument('-oil', help='Output the bounding box with the original img', dest='output_image_location',type=str)
+    parser.add_argument('-oil', help='Output original img location', dest='output_image_location',type=str)
     args = parser.parse_args()
 
     assert os.path.exists(args.input), 'The input path does not exists'
