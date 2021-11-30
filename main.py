@@ -151,7 +151,7 @@ def main():
         for i in range(scores.shape[0]):
             x1, y1, x2, y2 = boxes[i, :].tolist()
             new_result = {'score': float(scores[i]),
-                          'bbox': [int(x1), int(y1), int(x2), int(y2)]}
+                          'bbox': [x1, y1, x2, y2]}
             print(new_result)
             result[file].append(new_result)
 
