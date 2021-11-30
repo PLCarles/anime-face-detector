@@ -67,7 +67,7 @@ The original implementation of Faster-RCNN using Tensorflow can be found [here](
         ```bash
         python main.py -i /path/to/image/or/folder -crop-location /path/to/store/cropped/images -crop-height 224 -crop-width 224
         ```
-    -如果要生成带bounding-box的原图：
+    - 如果要生成带bounding-box的原图：
         ```bash
         python main.py -i /path/to/image/or/folder -oil /path/to/store/original/images -output_ori True
         ```
