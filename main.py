@@ -175,7 +175,7 @@ def main():
                 # saving the temporary result
                 with open(args.output, 'w') as f:
                     json.dump(result, f)
-        elif args.crop_output_image_location is None:
+        elif args.crop_output_image_location is None and args.output_image_location is None:
             cv2.imshow(file, img)
 
     if args.output:
