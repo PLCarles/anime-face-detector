@@ -97,8 +97,8 @@ def main():
                         default=0, type=int)
     parser.add_argument('-crop-width', help='The width of images to crop', dest='crop_width', type=int)
     parser.add_argument('-crop-height', help='The height of images to crop', dest='crop_height', type=int)
-    parser.add_argument('-output-ori', help='Output the bounding box with the original img', dest='output_ori',default = False, type=bool)
-    parser.add_argument('-oil', help='Output original img location', dest='output_image_location',type=str)
+    parser.add_argument('-out', help='Output the bounding box with the original img', choices=['Yes', 'No'], dest='out',default = 'No', type=str)
+    parser.add_argument('-oil', help='Output folder of original img', dest='output_image_location')
     args = parser.parse_args()
 
     assert os.path.exists(args.input), 'The input path does not exists'
@@ -154,7 +154,7 @@ def main():
             new_result = {'score': float(scores[i]),
                           'bbox': [x1, y1, x2, y2]}
             result[file].append(new_result)
-            if args.output_ori is True and args.output_image_location:
+            if args.out =='Yes' and args.output_image_location:
                 cv2.rectangle(img, (int(x1), int(y1)), (int(x2), int(y2)), (0, 0, 252), 2)
                 cv2.imwrite(args.output_image_location + str(args.start_output_number) + ".jpg", img)
                 args.start_output_number += 1
@@ -187,3 +187,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
