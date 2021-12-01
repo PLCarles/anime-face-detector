@@ -97,7 +97,6 @@ def main():
                         default=0, type=int)
     parser.add_argument('-crop-width', help='The width of images to crop', dest='crop_width', type=int)
     parser.add_argument('-crop-height', help='The height of images to crop', dest='crop_height', type=int)
-    parser.add_argument('-out', help='Output the bounding box with the original img', choices=['Yes', 'No'], dest='out',default = 'No', type=str)
     parser.add_argument('-oil', help='Output folder of original img', dest='output_image_location')
     args = parser.parse_args()
 
@@ -154,10 +153,9 @@ def main():
             new_result = {'score': float(scores[i]),
                           'bbox': [x1, y1, x2, y2]}
             result[file].append(new_result)
-            if args.out =='Yes' and args.output_image_location:
+            if args.output_image_location:
                 cv2.rectangle(img, (int(x1), int(y1)), (int(x2), int(y2)), (0, 0, 252), 2)
                 cv2.imwrite(args.output_image_location + str(args.start_output_number) + ".jpg", img)
-                args.start_output_number += 1
 
             if args.crop_output_image_location:
                 cropped_image = img[int(y1):int(y2), int(x1):int(x2)]
@@ -168,7 +166,7 @@ def main():
                                               interpolation = cv2.INTER_AREA)
 
                 cv2.imwrite(args.crop_output_image_location + str(args.start_output_number) + ".jpg", cropped_image)
-                args.start_output_number += 1
+            args.start_output_number += 1
 
         if args.output:
             if ((idx+1) % 1000) == 0:
